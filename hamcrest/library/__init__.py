@@ -6,6 +6,7 @@ from integration import *
 from number import *
 from object import *
 from text import *
+from make_matcher import *
 
 __author__ = "Jon Reid"
 __copyright__ = "Copyright 2011 hamcrest.org"
@@ -36,4 +37,5 @@ __all__ = [
     'contains_string',
     'ends_with',
     'starts_with',
+    'make_matcher',
 ]
