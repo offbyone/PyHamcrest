@@ -24,6 +24,10 @@ matrix:
       - python: jython
         env: NUMPY="true"
 
+    allow_failures:
+      - python: jython
+        env: NUMPY="false"
+
 before_install:
   - if [[ $TRAVIS_PYTHON_VERSION == "jython" ]]; then sudo apt-get install jython; fi
 
@@ -35,7 +39,8 @@ install:
     - python setup.py build --build-lib=build/lib
 
 before_script:
-  - if [ "$TRAVIS_PYTHON_VERSION" == "jython" ]; then jython -c "print ''"; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == "pypy" ]]; then export PYTHON_EXE=pypy; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == "jython" ]]; then export PYTHON_EXE=jython; jython -c "print ''"; fi
   - if [[ $TRAVIS_PYTHON_VERSION == "3.3" ]]; then export PYTHONHASHSEED=1; fi
 
 script:
@@ -43,3 +48,6 @@ script:
     # the python2 code from the current directory instead of the installed
     # 2to3 version.
     - nosetests -v -w build/lib hamcrest_unit_test
+
+notifications:
+  email:
