@@ -10,8 +10,11 @@ python:
     - jython
 
 env:
-  - NUMPY="true"
-  - NUMPY="false"
+  global:
+    - PYTHONHASHSEED=1
+  matrix:
+    - NUMPY="true"
+    - NUMPY="false"
 
 matrix:
     exclude:
