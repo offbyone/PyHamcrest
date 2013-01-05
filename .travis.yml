@@ -10,8 +10,6 @@ python:
     - jython
 
 env:
-  global:
-    - PYTHONHASHSEED=1
   matrix:
     - NUMPY="true"
     - NUMPY="false"
