@@ -26,8 +26,6 @@ matrix:
         env: NUMPY="true"
 
     allow_failures:
-      - python: 3.3
-        env: NUMPY="false"
       - python: jython2.5
         env: NUMPY="false"
 
@@ -41,10 +39,9 @@ before_install:
 install:
     - if [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then pip install --use-mirrors unittest2; fi
     - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then pip install --use-mirrors unittest2; fi
+    - if [[ $TRAVIS_PYTHON_VERSION == "jython2.5" ]]; then pip install --use-mirrors nose unittest2; fi
     - if [[ $NUMPY == "true" ]]; then pip install numpy; fi
     - "/usr/bin/yes | $PYTHON_EXE setup.py install 2>&1 | tail -n 2"
-    - which pip
-    - which nosetests || pip install nose
     # - pip install . --use-mirrors
 
 before_script:
@@ -55,8 +52,5 @@ script:
     # Must cd somewhere else so python3 doesn't get confused and run
     # the python2 code from the current directory instead of the installed
     # 2to3 version.
-    - which $PYTHON_EXE
-    - which nosetests
-    - pip freeze
     - $PYTHON_EXE setup.py build --build-lib=build/lib
     - nosetests -v -w build/lib hamcrest_unit_test
