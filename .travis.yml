@@ -56,4 +56,5 @@ script:
     - which nosetests
     - pip freeze
     - python setup.py build --build-lib=build/lib
-    - nosetests -v -w build/lib hamcrest_unit_test
+    - for i in 1 2 3 4 5 6; do PYTHONHASHSEED=$i nosetests -v -w build/lib hamcrest_unit_test && good_seeds="$good_seeds $i"; done
+    - echo "Good seeds: $good_seeds"
