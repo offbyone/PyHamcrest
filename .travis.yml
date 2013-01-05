@@ -44,6 +44,7 @@ install:
     - if [[ $NUMPY == "true" ]]; then pip install numpy; fi
     - "/usr/bin/yes | $PYTHON_EXE setup.py install 2>&1 | tail -n 2"
     - which pip
+    - which nosetests || pip install nose
     # - pip install . --use-mirrors
 
 before_script:
