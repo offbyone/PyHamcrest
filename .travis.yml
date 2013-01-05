@@ -35,7 +35,7 @@ install:
     - python setup.py build --build-lib=build/lib
 
 before_script:
-  - "if [[ $TRAVIS_PYTHON_VERSION == \"jython\" ]; then export PYTHON_EXE=jython; jython -c \"print ''\"; else export PYTHON_EXE=python; fi"
+  - if [ "$TRAVIS_PYTHON_VERSION" == "jython" ]; then jython -c "print ''"; fi
   - if [[ $TRAVIS_PYTHON_VERSION == "3.3" ]]; then export PYTHONHASHSEED=1; fi
 
 script:
