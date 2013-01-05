@@ -32,8 +32,6 @@ matrix:
         env: NUMPY="false"
 
 before_install:
-  - if [[ $TRAVIS_PYTHON_VERSION == "jython" ]]; then export PYTHON_EXE=jython; fi
-  - if [[ $TRAVIS_PYTHON_VERSION == "pypy" ]]; then export PYTHON_EXE=pypy; fi
   - if [[ $TRAVIS_PYTHON_VERSION == "3.3" ]]; then export PYTHONHASHSEED=1; fi
 
 install:
@@ -49,7 +47,8 @@ script:
     # Must cd somewhere else so python3 doesn't get confused and run
     # the python2 code from the current directory instead of the installed
     # 2to3 version.
-    - echo $PYTHON_EXE
+    - which python
+    - which nosetests
     - pip freeze
-    - $PYTHON_EXE setup.py build --build-lib=build/lib
+    - python setup.py build --build-lib=build/lib
     - nosetests -v -w build/lib hamcrest_unit_test
