@@ -1,1 +1,1 @@
-* Restore numpy testing for all modern Pythons
+Restore numpy testing for all modern Pythons

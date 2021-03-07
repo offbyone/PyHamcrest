@@ -1,1 +1,1 @@
-* Verify hamcrest testing on macos and windows
+Verify hamcrest testing on macos and windows

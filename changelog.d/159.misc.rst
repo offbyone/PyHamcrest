@@ -1,1 +1,1 @@
-* Changed the development branch from master to main
+Changed the development branch from master to main
