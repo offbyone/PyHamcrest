@@ -44,6 +44,8 @@ DEV_TOOLS = [
     "tox",
     "tox-pyenv",
     "tox-asdf",
+    "invoke",
+    "invocations~=2.0",
 ]
 
 
