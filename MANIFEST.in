@@ -18,7 +18,7 @@ prune doc/_build
 
 # remove some of the random source
 prune docker
-prune tasks.py
+exclude tasks.py
 exclude release.sh
 
 # Just to keep check-manifest happy; on releases those files are gone.

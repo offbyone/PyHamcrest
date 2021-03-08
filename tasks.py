@@ -43,4 +43,6 @@ def release(c, version):
     c.run("twine upload dist/*")
 
 
-ns = Collection(release,)
+ns = Collection(
+    release,
+)
